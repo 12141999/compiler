@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;    
+    font-family: 'Roboto', sans-serif;
+}
+
+#container {
+    display: flex;
+    width: 100%;
+}
+
+#editor {
+    height: 100%;
+    width: 100%;
+}
+
+#result {
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
+#toolbar {
+    background-color: white;
+    width:100%;
+}
+
+[class*="toolbar-"] {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.toolbar-button {
+    color: white;
+    background-color: seagreen;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition-duration: 1s;
+}
+
+.toolbar-text {
+    margin: 0 1rem;
+}
+
+.button:hover {
+    background-color: green;
+}
+
+#output {
+    overflow-y: scroll;
+}
+
+#output-text {
+    word-wrap: break-word;
+    padding: 1rem;
+}
+
+.output-text {
+    color: white;
+    padding: 0;
+    margin: 0;
+}

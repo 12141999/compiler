@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compiler</title>
+  <script type="text/javascript">
+     M.AutoInit();   
+    </script>
+
+  
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- font -->
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito');
+    </style> 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+</head>
+<body>
+<% include header %>
+
+<div class="section1">
+    <div class="container"><br><br><br><br>
+        <div class="row">
+            <form action="/python" method="POST">
+            <textarea style="height: 150px;" rows="12" cols="50" name="code" placeholder="write your code">
+            </textarea><br><br><br>
+            <textarea rows="12" cols="50" name="input" placeholder="">
+            </textarea><br><br><br>
+            <center><button id="codebutton" class="btn" type="submit">submit</button></center>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="pyoutput"  class="section3">
+    <div class="container"><br><br><br><br>
+        <div class="row">
+            <textarea style="height: 150px;" rows="12" cols="50" name="pythoninput">
+              <%= typeof error != "undefined" ? error: "" %>
+              <%= typeof output != "undefined" ? output: "" %>
+            </textarea><br><br><br>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+  var input = document.getElementById("input");
+  var pyoutput = document.getElementById("pyoutput");
+  var codebutton = document.getElementById("codebutton");
+ 
+  codebutton.addEventListener("click" , function(){
+    input.style.display = "block";
+    pyoutput.style.display = "block"; 
+  });
+
+</script>
+
+</body>
+</html>

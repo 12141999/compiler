@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="/style.css" rel="stylesheet">
+    </head>
+    <body>
+       
+    
+        <div id="container">
+           <div id="editor">
+
+           </div>
+  
+
+
+        <div id="result">
+                <div id="toolbar">
+                    <div class="toolbar-text">
+
+                    <select class="toolbar-text" id="language" name="language">
+                            <p><option class="toolbar-text" name="group2" value="python">Python</option></p>
+                            <p><option class="toolbar-text" name="group2" value="cpp">C++</option></p>
+                            <p><option class="toolbar-text" name="group2" value="c">C</option></p>
+                            <p><option class="toolbar-text" name="group2" value="node">Node Js</option></p>
+                            <p><option class="toolbar-text" name="group2" value="java">Java</option></p>
+                    </select>
+                  </div>
+                    <button id="run-button" type="submit" class="toolbar-button" >Run</button>
+                </div>
+                <div id="output">
+                    
+                </div>
+        </div>
+        </div>
+    
+
+        </div>
+ 
+            <div>
+                <div style="color: black;" id="output">
+                    input : <textarea style="width: 100%;
+    height: 10%;
+    border: 1px solid black;" id="input" name="input"></textarea>
+                    
+                </div>
+            </div>
+        
+
+        <script src="/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script>
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/monokai");
+            editor.session.setMode("ace/mode/java");
+            var run = document.getElementById("run-button");
+            var input = document.getElementById("input");
+            var output = document.getElementById("output");
+            var language = document.getElementById("language");
+            
+           
+           run.addEventListener('click', function(){ 
+          if(language.value === "python")
+          {
+                $.ajax({
+                    url: '/python',
+                    type: 'POST',
+                    data: {code: editor.getValue() , input : input.value },
+                    success: function(e){
+                        console.log(e);
+                        console.log(e.out);
+                     output.innerHTML = ">>" +  e.out + e.error;
+                    }
+                }).fail(function() {
+                    console.log("error");
+                }); 
+                console.log(editor.getValue());
+                console.log(language.value);
+            }
+          
+             else if(language.value === "cpp")
+         {
+                $.ajax({
+                    url: '/cpp',
+                    type: 'POST',
+                    data: {code: editor.getValue() , input : input.value },
+                    success: function(e){
+                        console.log(e);
+                        console.log(e.out);
+                        //console.log(e[out]);
+                     output.innerHTML = ">>" +  e.out + e.error;
+                    }
+                }).fail(function() {
+                    console.log("error");
+                }); 
+                console.log(editor.getValue());
+                console.log(language.value);
+         }
+
+          else if(language.value === "c")
+         {
+                $.ajax({
+                    url: '/c',
+                    type: 'POST',
+                    data: {code: editor.getValue() , input : input.value },
+                    success: function(e){
+                        console.log(e);
+                        console.log(e.out);
+                        //console.log(e[out]);
+                     output.innerHTML = ">>" +  e.out + e.error;
+                    }
+                }).fail(function() {
+                    console.log("error");
+                }); 
+                console.log(editor.getValue());
+                console.log(language.value);
+         }
+          
+
+         else if(language.value === "java")
+         {
+                $.ajax({
+                    url: '/java',
+                    type: 'POST',
+                    data: {code: editor.getValue() , input : input.value },
+                    success: function(e){
+                        console.log(e);
+                        console.log(e.out);
+                        //console.log(e[out]);
+                     output.innerHTML = ">>" +  e.out + e.error;
+                    }
+                }).fail(function() {
+                    console.log("error");
+                }); 
+                console.log(editor.getValue());
+                console.log(language.value);
+         }
+
+         else
+         {
+                $.ajax({
+                    url: '/node',
+                    type: 'POST',
+                    data: {code: editor.getValue() , input : input.value },
+                    success: function(e){
+                        console.log(e);
+                        console.log(e.out);
+                        //console.log(e[out]);
+                     output.innerHTML = ">>" +  e.out + e.error;
+                    }
+                }).fail(function() {
+                    console.log("error");
+                }); 
+                console.log(editor.getValue());
+                console.log(language.value);
+         }
+
+         
+            });
+
+
+        </script>
+    </body>
+</html>
